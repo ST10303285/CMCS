@@ -1,5 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<CMCS.Models.Claim>
+
+<h2>Programme Coordinator/Manager Dashboard</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Hours Worked</th>
+            <th>Claim Amount</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.ClaimAmount</td>
+                <td>@claim.Status</td>
+                <td>
+                    <a href="#" class="btn btn-success">Approve</a>
+                    <a href="#" class="btn btn-danger">Reject</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
