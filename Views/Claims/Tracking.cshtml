@@ -1,5 +1,41 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<CMCS.Models.Claim>
+
 @{
+    ViewBag.Title = "Track Your Claims";
 }
+
+<h2>Track Your Claims</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Submission Date</th>
+            <th>Hours Worked</th>
+            <th>Claim Amount</th>
+            <th>Status</th>
+            <th>Last Updated</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimId</td>
+                <td>@claim.SubmissionDate.ToString("dd MMM yyyy")</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.ClaimAmount.ToString("C")</td> <!-- "C" format specifier is for currency -->
+                <td>@claim.Status</td>
+                <td>@claim.LastUpdated.ToString("dd MMM yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p>No claims have been submitted yet.</p>
+}
+
+<a href="@Url.Action("Submit", "Claims")" class="btn btn-primary">Submit New Claim</a>
+
