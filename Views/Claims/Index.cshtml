@@ -1,5 +1,36 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<CMCS.Models.Claim>
+
+<h2>Lecturer Dashboard</h2>
+
+<p><a href="@Url.Action("Submit", "Claims")" class="btn btn-primary">Submit New Claim</a></p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Hours Worked</th>
+            <th>Claim Amount</th>
+            <th>Status</th>
+            <th>Submission Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerName</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.ClaimAmount</td>
+                <td>@claim.Status</td>
+                <td>@claim.SubmissionDate</td>
+            </tr>
+        }
+        @if (!Model.Any())
+        {
+            <tr>
+                <td colspan="5">No claims submitted yet.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
