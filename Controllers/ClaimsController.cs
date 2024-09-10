@@ -37,5 +37,22 @@ namespace CMCS.Controllers
         {
             return View(claims);
         }
+
+        private List<Claim> GetClaims()
+        {
+            return new List<Claim>
+            {
+                new Claim { ClaimId = 1, LecturerName = "John Doe", HoursWorked = 20, ClaimAmount = 3000, Status = "Pending", SubmissionDate = DateTime.Now.AddDays(-5), LastUpdated = DateTime.Now.AddDays(-1) },
+                new Claim { ClaimId = 2, LecturerName = "John Doe", HoursWorked = 15, ClaimAmount = 2000, Status = "Approved", SubmissionDate = DateTime.Now.AddDays(-10), LastUpdated = DateTime.Now.AddDays(-3) }
+            };
+        }
+        public IActionResult Tracking()
+        {
+            
+            var claims = GetClaims();
+
+            // Passing the list of claims to the Tracking view
+            return View(claims);
+        }
     }
 }
