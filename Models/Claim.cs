@@ -11,5 +11,6 @@ namespace CMCS.Models
         public double ClaimAmount { get; set; }
         public string Status { get; set; }
         public DateTime SubmissionDate { get; set; }
+        public DateTime LastUpdated { get; set; }
     }
 }
